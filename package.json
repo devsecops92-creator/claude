@@ -1,0 +1,63 @@
+{
+  "name": "claude-secure-chat",
+  "displayName": "Claude Secure Chat",
+  "description": "Claude AI chat with input validation via local proxy",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeSecureChat.open",
+        "title": "Open Claude Secure Chat",
+        "icon": "$(comment-discussion)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claudeSecureChat",
+          "title": "Claude Secure Chat",
+          "icon": "$(comment-discussion)"
+        }
+      ]
+    },
+    "views": {
+      "claudeSecureChat": [
+        {
+          "type": "webview",
+          "id": "claudeSecureChat.chatView",
+          "name": "Claude Secure Chat"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude Secure Chat",
+      "properties": {
+        "claudeSecureChat.proxyUrl": {
+          "type": "string",
+          "default": "http://localhost:5010",
+          "description": "Local proxy URL"
+        },
+        "claudeSecureChat.model": {
+          "type": "string",
+          "default": "claude-sonnet-4-6",
+          "description": "Claude model to use"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "@vscode/vsce": "^2.0.0"
+  }
+}
