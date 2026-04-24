@@ -1,18 +1,23 @@
 {
   "name": "claude-secure-chat",
   "displayName": "Claude Secure Chat",
+  "publisher": "local-dev",
   "description": "Claude AI chat with input validation via local proxy",
   "version": "1.0.0",
   "engines": { "vscode": "^1.85.0" },
+  "main": "./dist/extension.js",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/local/claude-secure-chat"
+  },
   "categories": ["Other"],
   "activationEvents": [],
-  "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "claudeSecureChat.open",
-        "title": "Open Claude Secure Chat",
-        "icon": "$(comment-discussion)"
+        "title": "Open Claude Secure Chat"
       }
     ],
     "viewsContainers": {
@@ -20,7 +25,7 @@
         {
           "id": "claudeSecureChat",
           "title": "Claude Secure Chat",
-          "icon": "$(comment-discussion)"
+          "icon": "images/icon.svg"
         }
       ]
     },
@@ -50,14 +55,17 @@
     }
   },
   "scripts": {
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "package": "vsce package"
+    "compile": "webpack --mode development",
+    "watch":   "webpack --mode development --watch",
+    "package": "webpack --mode production"
   },
   "devDependencies": {
     "@types/vscode": "^1.85.0",
     "@types/node": "^20.0.0",
     "typescript": "^5.0.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^5.0.0",
+    "ts-loader": "^9.0.0",
     "@vscode/vsce": "^2.0.0"
   }
 }
