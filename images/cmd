@@ -1,0 +1,13 @@
+# Install Pillow to generate PNG
+pip install Pillow
+
+# Create a simple purple icon
+python -c "
+from PIL import Image, ImageDraw
+img = Image.new('RGBA', (128, 128), (0, 0, 0, 0))
+draw = ImageDraw.Draw(img)
+draw.rounded_rectangle([10, 10, 118, 118], radius=20, fill=(167, 139, 250, 255))
+draw.ellipse([40, 45, 88, 83], fill=(255, 255, 255, 255))
+img.save('images/icon.png')
+print('icon.png created')
+"
